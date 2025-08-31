@@ -20,7 +20,7 @@
     <Grid RowDefinitions="Auto, * , Auto" 
           x:Name="Root">
         <!--Title Text Block -->
-        <TextBlock Text="My Todo-List" />
+        <TextBlock Classes="h1" Text="My Todo-List" />
         
         <ScrollViewer Grid.Row="1">
             <!--ItemsControl shows all added TodoItems -->
@@ -48,7 +48,7 @@
                             <Button Grid.Column="1"
                                     Command="{Binding #Root.((vm:MainWindowViewModel)DataContext).RemoveItemCommand}"
                                     CommandParameter="{Binding .}">
-                                Delete
+                                <PathIcon Data="{DynamicResource delete_regular}" Foreground="red"/>
                             </Button>
 
                         </Grid>
@@ -64,8 +64,7 @@
                  Watermark="...New Note">
             <TextBox.InnerRightContent>
                 <Button Command="{Binding AddItemCommand}">
-                    Add
-                    <!--<PathIcon Data="{DynamicResource AcceptIconData}" Foreground="Green""/> -->
+                    <PathIcon Data="{DynamicResource add_square_regular}" Foreground="LightSeaGreen"/>
                 </Button>
             </TextBox.InnerRightContent>
             

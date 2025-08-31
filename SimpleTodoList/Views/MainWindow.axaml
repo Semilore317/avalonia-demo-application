@@ -26,7 +26,23 @@
             <!--ItemsControl shows all added TodoItems -->
             <!--should be within a scrollViewer -->
             <ItemsControl ItemsSource="{Binding TodoItems}">
-                
+                <ItemsControl.ItemTemplate>
+                    <!--ItemTemplate defines how each item should be represented -->
+                    <!-- item should be a checkbox and a delete button-->
+                    <DataTemplate DataType="vm:TodoItemViewModel">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <CheckBox Content="{Binding Content}"
+                                      IsChecked="{Binding IsChecked}" />
+
+                            <Button Command="{Binding #Root.((vm:MainWindowViewModel)DataContext).RemoveItem}"
+                                    CommandParameter="{Binding .}"
+                                    Grid.Column="1">
+                                Delete
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+
+                </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
         
@@ -34,7 +50,17 @@
         <TextBox Grid.Row="2"
                  Text="{Binding NewItemContent}"
                  Watermark="...New Note">
+            <TextBox.InnerRightContent>
+                <Button Command="{Binding AddItemCommand}">
+                    Add
+                    <!--<PathIcon Data="{DynamicResource AcceptIconData}" Foreground="Green""/> -->
+                </Button>
+            </TextBox.InnerRightContent>
             
+            <!--define keyboard gestures -->
+            <TextBox.KeyBindings>
+                <KeyBinding Command="{Binding AddItemCommand}" Gesture="Enter"/>
+            </TextBox.KeyBindings>
         </TextBox>
     </Grid>
 </Window>

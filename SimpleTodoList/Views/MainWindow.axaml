@@ -3,7 +3,9 @@
         xmlns:vm="using:SimpleTodoList.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="500"
+        Width="300"
+        Height="500"
         x:Class="SimpleTodoList.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
@@ -15,8 +17,24 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
     
-    <!--
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    -->
-    <TextBlock Text="Hey There" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+    <Grid RowDefinitions="Auto, * , Auto" 
+          x:Name="Root">
+        <!--Title Text Block -->
+        <TextBlock Text="My Todo-List" />
+        
+        <ScrollViewer Grid.Row="1">
+            <!--ItemsControl shows all added TodoItems -->
+            <!--should be within a scrollViewer -->
+            <ItemsControl ItemsSource="{Binding TodoItems}">
+                
+            </ItemsControl>
+        </ScrollViewer>
+        
+        <!--TextBox to add new TodoItems -->
+        <TextBox Grid.Row="2"
+                 Text="{Binding NewItemContent}"
+                 Watermark="...New Note">
+            
+        </TextBox>
+    </Grid>
 </Window>

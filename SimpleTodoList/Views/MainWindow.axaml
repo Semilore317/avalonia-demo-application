@@ -34,11 +34,23 @@
                             <CheckBox Content="{Binding Content}"
                                       IsChecked="{Binding IsChecked}" />
 
-                            <Button Command="{Binding #Root.((vm:MainWindowViewModel)DataContext).RemoveItem}"
-                                    CommandParameter="{Binding .}"
-                                    Grid.Column="1">
+                            <!-- <Button Command="{Binding #Root.((vm:MainWindowViewModel)DataContext).RemoveItem}" -->
+                            <!--         CommandParameter="{Binding .}" -->
+                            <!--         Grid.Column="1"> -->
+                            <!--     Delete -->
+                            <!-- </Button> -->
+                            <!-- <Button Grid.Column="1" -->
+                            <!--         Command="{Binding RelativeSource={RelativeSource AncestorType=Window}}" -->
+                            <!--         CommandParameter="{Binding .}"> -->
+                            <!--     Delete -->
+                            <!-- </Button> -->
+                            <!-- -->
+                            <Button Grid.Column="1"
+                                    Command="{Binding #Root.((vm:MainWindowViewModel)DataContext).RemoveItemCommand}"
+                                    CommandParameter="{Binding .}">
                                 Delete
                             </Button>
+
                         </Grid>
                     </DataTemplate>
 

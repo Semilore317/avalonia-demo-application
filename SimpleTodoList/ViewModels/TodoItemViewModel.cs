@@ -30,6 +30,14 @@ namespace SimpleTodoList.ViewModels
         // gets or sets the content of the to-do item
         [ObservableProperty]
         private String? _content;
-        
+
+        public TodoItem GetTodoItem()
+        {
+            return new TodoItem()
+            {
+                isChecked = this.IsChecked,
+                Content = this.Content
+            };
+        }
     }
 }

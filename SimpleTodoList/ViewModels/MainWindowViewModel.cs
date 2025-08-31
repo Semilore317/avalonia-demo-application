@@ -31,4 +31,12 @@ public partial class MainWindowViewModel : ViewModelBase
         // reset the NewItemContent
         NewItemContent = null; // reset the newItemContent -> makes input field clear
     }
+    
+    // method to remove items from list
+    [RelayCommand]
+    private void RemoveItem(TodoItemViewModel item)
+    {
+        // remove the given item from the list
+        TodoItems.Remove(item);
+    }
 }
